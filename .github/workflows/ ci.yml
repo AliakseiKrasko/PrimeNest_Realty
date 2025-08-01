@@ -7,7 +7,7 @@ on:
     branches: [main, master, develop]
 
 jobs:
-  build:
+  build-and-test:
     runs-on: ubuntu-latest
 
     steps:
@@ -31,5 +31,19 @@ jobs:
       - name: Lint
         run: pnpm lint
 
+      - name: Run unit tests (Jest)
+        run: pnpm test:ci
+
       - name: Build project
         run: pnpm build
+
+      - name: Start app in background
+        run: pnpm start &
+        env:
+          NODE_ENV: production
+
+      - name: Wait for app to be ready
+        run: npx wait-on http://localhost:3000
+
+      - name: Run Cypress e2e tests
+        run: pnpm cypress:run
