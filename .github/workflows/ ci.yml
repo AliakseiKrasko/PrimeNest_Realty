@@ -20,6 +20,7 @@ jobs:
           node-version: 20
           cache: 'pnpm'
 
+      # ВАЖНО! Этот шаг должен быть сразу после setup-node!
       - name: Install pnpm
         uses: pnpm/action-setup@v4
         with:
