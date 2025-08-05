@@ -4,6 +4,6 @@ import Home from '../app/page';
 describe('Home page', () => {
     it('renders headline', () => {
         render(<Home />);
-        expect(screen.getByText(/Tailwind работает!/i)).toBeInTheDocument();
+        expect(screen.getByText(/Каталог недвижимости/i)).toBeInTheDocument();
     });
 });
