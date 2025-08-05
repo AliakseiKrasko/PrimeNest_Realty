@@ -1,9 +1,15 @@
-import Image from "next/image";
+import {ESTATES} from "@/mocks/estates";
+import EstateCard from "@/components/EstateCard";
 
-export default function Home() {
-  return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <div className="bg-blue-500 text-white p-4">Tailwind работает!</div>
-    </div>
-  );
+export default function HomePage() {
+    return (
+        <main className="max-w-5xl mx-auto py-10">
+            <h1 className="text-3xl font-bolt mb-6">Каталог недвижимости</h1>
+            <div>
+                {ESTATES.map(estate => (
+                    <EstateCard key={estate.id} estate={estate} />
+                ))}
+            </div>
+        </main>
+    );
 }
