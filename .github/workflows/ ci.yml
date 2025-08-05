@@ -44,5 +44,5 @@ jobs:
       - name: Run Cypress (e2e)
         uses: cypress-io/github-action@v6
         with:
-          start: pnpm dev -- --host=0.0.0.0
+          start: pnpm dev -- --hostname=0.0.0.0
           wait-on: 'http://localhost:3000'
