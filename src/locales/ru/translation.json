@@ -1,0 +1,10 @@
+{
+  "catalog": "Каталог недвижимости",
+  "price": "Цена",
+  "city": "Город",
+  "type_apartment": "Квартира",
+  "type_house": "Дом",
+  "type_commercial": "Коммерческая",
+  "rooms": "Комнат",
+  "area": "м²"
+}

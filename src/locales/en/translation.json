@@ -1,0 +1,10 @@
+{
+  "catalog": "Real Estate Catalog",
+  "price": "Price",
+  "city": "City",
+  "type_apartment": "Apartment",
+  "type_house": "House",
+  "type_commercial": "Commercial",
+  "rooms": "Rooms",
+  "area": "m²"
+}
