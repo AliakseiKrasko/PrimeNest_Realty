@@ -20,14 +20,13 @@ jobs:
           node-version: 20
           cache: 'pnpm'
 
-      # ВАЖНО! Этот шаг должен быть сразу после setup-node!
       - name: Install pnpm
         uses: pnpm/action-setup@v4
         with:
           version: 8
 
       - name: Install dependencies
-        run: pnpm install
+        run: pnpm install --frozen-lockfile
 
       - name: Lint
         run: pnpm lint
@@ -38,13 +37,8 @@ jobs:
       - name: Build project
         run: pnpm build
 
-      - name: Start app in background
-        run: pnpm start &
-        env:
-          NODE_ENV: production
-
-      - name: Wait for app to be ready
-        run: npx wait-on http://localhost:3000
-
-      - name: Run Cypress e2e tests
-        run: pnpm cypress:run
+      - name: Run Cypress (e2e)
+        uses: cypress-io/github-action@v6
+        with:
+          start: pnpm dev -- --host=0.0.0.0
+          wait-on: 'http://localhost:3000'
