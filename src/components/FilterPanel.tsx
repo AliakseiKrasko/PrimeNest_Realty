@@ -5,7 +5,8 @@
 import React from "react";
 import {useTranslation} from "react-i18next";
 import {FiltersState} from "@/store/filtersSlice";
-import {ESTATES} from "@/mocks/estates"; // или API-данные, если уже с бэка
+import {ESTATES} from "@/mocks/estates";
+import LanguageSwitcher from "@/components/LanguageSwitcher"; // или API-данные, если уже с бэка
 
 interface Props {
     filters: FiltersState;
@@ -64,6 +65,7 @@ export default function FilterPanel({ filters, setFilters }: Props) {
             <button className="border rounded px-4 py-2" onClick={() => setFilters({ city: "", type: "", minPrice: "", maxPrice: "" })}>
                 {t("reset")}
             </button>
+            <LanguageSwitcher />
         </div>
     );
 }

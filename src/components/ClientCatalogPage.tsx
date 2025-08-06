@@ -7,6 +7,7 @@ import { setFilters } from "@/store/filtersSlice";
 import EstateCard from "@/components/EstateCard";
 import FilterPanel from "@/components/FilterPanel";
 import {useMemo} from "react";
+import {useTranslation} from "react-i18next";
 
 export default function ClientCatalogPage() {
     const { data: estates = [], isLoading } = useGetEstatesQuery();
@@ -24,13 +25,18 @@ export default function ClientCatalogPage() {
         }), [estates, filters]
     );
 
+    const { t } = useTranslation();
+
     return (
         <div className="flex flex-col p-5">
             <FilterPanel
                 filters={filters}
                 setFilters={(f) => dispatch(setFilters(f))}
             />
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+            <div>
+                <h1>{t('catalog')}</h1>
+            </div>
+            <div className="grid grid-cols-[repeat(auto-fit,_minmax(270px,_1fr))] gap-5">
                 {filteredEstates.map((estate) => (
                     <EstateCard key={estate.id} estate={estate} />
                 ))}
