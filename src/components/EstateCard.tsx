@@ -17,7 +17,7 @@ const EstateCard = React.memo(function EstateCard({ estate }: EstateCardProps) {
     const typeKey = `type_${estate.type}`;
 
     return (
-        <div className="rounded-2xl overflow-hidden shadow-lg bg-white flex flex-col p-2">
+        <div className="rounded-2xl overflow-hidden shadow-lg bg-white flex flex-col mx-auto my-2">
             <img
                 src={estate.image_url || "https://placehold.co/400x250"}
                 alt={estate.title}

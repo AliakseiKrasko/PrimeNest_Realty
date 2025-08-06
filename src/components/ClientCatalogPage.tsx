@@ -25,12 +25,12 @@ export default function ClientCatalogPage() {
     );
 
     return (
-        <div>
+        <div className="flex flex-col p-5">
             <FilterPanel
                 filters={filters}
                 setFilters={(f) => dispatch(setFilters(f))}
             />
-            <div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
                 {filteredEstates.map((estate) => (
                     <EstateCard key={estate.id} estate={estate} />
                 ))}
