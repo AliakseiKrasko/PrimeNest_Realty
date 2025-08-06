@@ -15,7 +15,7 @@ export default function EstateCard({estate}: EstateCard) {
     const typeKey = `type_${estate.type}`;
 
     return (
-        <div className="rounded-2xl overflow-hidden shadow-lg bg-white flex flex-col">
+        <div className="rounded-2xl overflow-hidden shadow-lg bg-white flex flex-col p-2">
             <img
                 src={estate.image_url || "https://placehold.co/400x250"}
                 alt={estate.title}

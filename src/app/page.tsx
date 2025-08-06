@@ -32,8 +32,8 @@ export default function HomePage() {
                 return (
                     (!filters.city || estate.city === filters.city) &&
                     (!filters.type || estate.type === filters.type) &&
-                    (!filters.minPrice || estate.price === +filters.minPrice) &&
-                    (!filters.maxPrice || estate.price === +filters.maxPrice)
+                    (!filters.minPrice || estate.price >= +filters.minPrice) &&
+                    (!filters.maxPrice || estate.price <= +filters.maxPrice)
                 );
             }),
         [filters, ESTATES]
@@ -42,10 +42,10 @@ export default function HomePage() {
     return (
         <main className="max-w-5xl mx-auto py-10">
             <h1 className="text-3xl font-bolt mb-6">{t("catalog")}</h1>
-            <div>
+            <div className="p-5">
                 {/* 4. Панель фильтров */}
                 <select
-                    className="border rounded p-2"
+                    className="border rounded p-2 mr-2 h-10"
                     value={filters.city}
                     onChange={(e) => setFilters(f => ({...f, city: e.target.value}))}
                 >
@@ -57,7 +57,7 @@ export default function HomePage() {
                 </select>
                 {/* Фильтр по типу */}
                 <select
-                    className="border rounded p-2"
+                    className="border rounded p-2 mr-2 h-10"
                     value={filters.type}
                     onChange={(e) => setFilters(f => ({...f, type: e.target.value}))}
                 >
@@ -68,14 +68,14 @@ export default function HomePage() {
                 </select>
                 {/* Фильтр по цене */}
                 <input
-                    className="border rounded p-2"
+                    className="border rounded p-2 mr-2 h-10"
                     type="number"
                     placeholder={t("maxPrice")}
                     value={filters.maxPrice}
                     onChange={(e) => setFilters(f => ({...f, maxPrice: e.target.value}))}
                 />
                 <input
-                    className="border rounded p-2"
+                    className="border rounded p-2 h-10"
                     type="number"
                     placeholder={t("minPrice")}
                     value={filters.minPrice}
@@ -90,8 +90,8 @@ export default function HomePage() {
             </div>
             {/* 6. Кнопки смены языка */}
             <div className="mt-8 flex gap-2">
-                <button className="border rounded p-2" onClick={() => i18n.changeLanguage("en")}>EN</button>
-                <button className="border rounded p-2" onClick={() => i18n.changeLanguage("ru")}>RU</button>
+                <button className="border rounded p-2 cursor-pointer" onClick={() => i18n.changeLanguage("en")}>EN</button>
+                <button className="border rounded p-2 cursor-pointer" onClick={() => i18n.changeLanguage("ru")}>RU</button>
             </div>
         </main>
     );
