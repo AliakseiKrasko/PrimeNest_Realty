@@ -1,14 +1,16 @@
 "use client"
 
 import "@/i18n";
-import {Estate} from "@/shared/types/estate";
-import {useTranslation} from "react-i18next";
+import { Estate } from "@/shared/types/estate";
+import { useTranslation } from "react-i18next";
+import React from "react";
 
-interface EstateCard {
+// Типизируй props правильно
+interface EstateCardProps {
     estate: Estate;
 }
 
-export default function EstateCard({estate}: EstateCard) {
+const EstateCard = React.memo(function EstateCard({ estate }: EstateCardProps) {
     const { t } = useTranslation();
 
     // Ключ для типа объекта
@@ -25,7 +27,7 @@ export default function EstateCard({estate}: EstateCard) {
                 <h2 className="text-xl font-semibold mb-2">{estate.title}</h2>
                 <div className="text-gray-600 mb-1">{estate.city}</div>
                 <div className="text-gray-700 mb-2">{estate.address}</div>
-                <div className="text-base font-bolt mb-2">
+                <div className="text-base font-bold mb-2">
                     {t('price')}: {estate.price.toLocaleString()}
                 </div>
                 <div className="text-sm text-gray-500">
@@ -35,5 +37,7 @@ export default function EstateCard({estate}: EstateCard) {
                 </div>
             </div>
         </div>
-    )
-};
+    );
+});
+
+export default EstateCard;
